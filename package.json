@@ -1,0 +1,19 @@
+{
+  "name": "burger",
+  "version": "1.0.0",
+  "description": "NPM files",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/awvala/burger.git"
+  },
+  "author": "Andrew Vala",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/awvala/burger/issues"
+  },
+  "homepage": "https://github.com/awvala/burger#readme"
+}
