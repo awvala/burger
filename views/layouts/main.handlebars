@@ -21,7 +21,6 @@
         $(function () {
             $(".change-devoured").on("click", function (event) {
                 var id = $(this).data("id");
-                //var newDevoured = $(this).data("newdevoured");
                 var newDevouredState = {
                     devoured: true
                 };
@@ -32,7 +31,7 @@
                     data: newDevouredState
                 }).then(
                     function () {
-                        console.log("Changed devoured to", newDevoured);
+                        console.log("Changed devoured to", newDevouredState);
                         // Reload the page to get the updated list
                         location.reload();
                     }

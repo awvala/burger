@@ -24,12 +24,10 @@ function objToSql(ob) {
         var value = ob[key];
         // check to skip hidden properties
         if (Object.hasOwnProperty.call(ob, key)) {
-            // if string with spaces, add quotations (Lana Del Grey => 'Lana Del Grey')
+            // if string with spaces, add quotations (Summer Thyme Burger => 'Summer Thyme Burger')
             if (typeof value === "string" && value.indexOf(" ") >= 0) {
                 value = "'" + value + "'";
             }
-            // e.g. {name: 'Lana Del Grey'} => ["name='Lana Del Grey'"]
-            // e.g. {sleepy: true} => ["sleepy=true"]
             arr.push(key + "=" + value);
         }
     }
@@ -48,30 +46,40 @@ var orm = {
         var queryString = "SELECT * FROM ??;";
         connection.query(queryString, table, function (err, result) {
             if (err) throw err;
-            //console.log(result);
             cb(result);
         });
     },
 
-    insertOne: function (table, colName, burgerName, cb) {
-        var queryString = "INSERT INTO ?? (??) VALUES (?);";
-        console.log(queryString);
-        connection.query(queryString, [table, colName, burgerName], function (err, result) {
-            if (err) throw err;
-            console.log(result);
-            cb(result);
-        });
-    },
+	insertOne: function(table, cols, vals, cb) {
+		// Construct the query string that inserts a single row into the target table
+		var queryString = "INSERT INTO " + table;
 
-    updateOne: function (table, colName, devouredStatus, burgerID, cb) {
-        var queryString = "UPDATE ?? SET ?? = ? WHERE id = ?;";
-        console.log(queryString);
-        connection.query(queryString, [table, colName, devouredStatus, burgerID], function (err, result) {
+		queryString += " (";
+		queryString += cols.toString();
+		queryString += ") ";
+		queryString += "VALUES (";
+		queryString += printQuestionMarks(vals.length);
+		queryString += ") ";
+
+		connection.query(queryString, vals, function(err, result) {
             if (err) throw err;
-            console.log(result);
             cb(result);
-        });
-    }
+		});
+	},
+
+	updateOne: function(table, objColVals, condition, cb) {
+		var queryString = "UPDATE " + table;
+
+		queryString += " SET ";
+		queryString += objToSql(objColVals);
+		queryString += " WHERE ";
+		queryString += condition;
+
+		connection.query(queryString, function(err, result) {
+            if (err) throw err;
+            cb(result);
+		});
+	}
 };
 
 module.exports = orm;
