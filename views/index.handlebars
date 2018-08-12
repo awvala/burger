@@ -1,11 +1,11 @@
 <h1>Build a burger!</h1>
 
-<h2>Ready made burgers!</h2>
+<h2>Ready Made burgers!</h2>
 
 <ul>
   {{#each burgers}}
     {{#unless devoured}}
-      {{> burgers/burger-block devoured=false}}
+      {{> burgers/burger-block sleep=true}}
     {{/unless}}
   {{/each}}
 </ul>
@@ -15,7 +15,9 @@
 <ul>
   {{#each burgers}}
     {{#if devoured}}
-      {{> burgers/burger-block sleep=true}}
+      <li>
+	{{burger_name}}
+</li>
     {{/if}}
   {{/each}}
 </ul>
