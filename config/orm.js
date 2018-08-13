@@ -1,3 +1,4 @@
+// Dependecies
 var connection = require("./connection.js");;
 
 // Helper function for SQL syntax.
