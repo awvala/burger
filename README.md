@@ -1,8 +1,19 @@
 # burger
-Get-a-Burger class project for the University of Minnesota full stack web development boot camp.
+Build-a-Burger class project for the University of Minnesota full stack web development boot camp.
 
 ## Demo:
 https://build-da-burgerawvala.herokuapp.com/
+
+## Technology Used
+* Nodes.js
+* Express.js
+* MySQL
+* Heroku
+* Bootstrap 4
+* Handlebars
+* NPM
+* JavaScript
+* jQuery
 
 ## Project Requirements
 
