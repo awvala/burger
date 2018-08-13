@@ -1,34 +1,58 @@
-<h1>Build a burger!</h1>
+<div class "main-page d-flex flex-column bg">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="jumbotron">
+          <h1 class="display-4">Build-Da-Burger</h1>
+          <hr class="my-4">
+          <p>Share your favorite burgers!</p>
+        </div>
+      </div>
+    </div>
 
-<h2>Ready Made burgers!</h2>
+    <!-- Create new burger row -->
+    <div class="row newBurger">
+      <div class="col-sm-12">
+        <div class="form-container">
+          <h5>Build a Burger</h5>
+          <br>
+          <form class="create-form">
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" placeholder="Burger name" aria-label="New burger name" id="burger" name="burger_name"
+                aria-describedby="basic-addon2">
+              <div class="input-group-append">
+                <button type="submit">
+                  <i class="fa fa-fire" aria-hidden="true"></i> Add Burger</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- Burger lists -->
+    <div class="row">
+      <div class="col-sm-5">
+        <h5>Ready Made Burgers</h5>
+        <br>
+        <ul class="newburger">
+          {{#each burgers}} {{#unless devoured}} {{> burgers/burger-block devoured=true}} {{/unless}} {{/each}}
+        </ul>
+      </div>
 
-<ul>
-  {{#each burgers}}
-    {{#unless devoured}}
-      {{> burgers/burger-block devoured=true}}
-    {{/unless}}
-  {{/each}}
-</ul>
+      <div class="col-sm-2"></div>
 
-<h2>Devoured burgers</h2>
-
-<ul>
-  {{#each burgers}}
-    {{#if devoured}}
-      <li>
-	{{burger_name}}
-</li>
-    {{/if}}
-  {{/each}}
-</ul>
-
-<h2>Build a burger</h2>
-<form class="create-form">
-
-  <div class="form-group">
-    <label for="burger">Burger Name:</label>
-    <input type="text" id="burger" name="burger_name">
+      <div class="col-sm-5">
+        <h5>Devoured Burgers</h5>
+        <br>
+        <ul class="eatenburger">
+          {{#each burgers}} {{#if devoured}}
+          <li>
+            {{burger_name}}
+          </li>
+          <hr> {{/if}}{{/each}}
+        </ul>
+      </div>
+    </div>
+    <!-- End burger lists -->
   </div>
-
-  <button type="submit">Add Burger</button>
-</form>
+</div>

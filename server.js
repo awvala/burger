@@ -26,7 +26,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // Static directory to be served
-app.use(express.static("/public"));
+//app.use(express.static("/public"));
+app.use(express.static(__dirname + '/public'));
 
 // Set Handlebars as the default templating engine.
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
