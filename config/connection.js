@@ -1,20 +1,11 @@
 var mysql = require("mysql");
 
-// Pre-Heroku deployment
-/*var connection = mysql.createConnection({
-  host: "localhost",
-  port: 3306,
-  user: "root",
-  password: "Tardis1011",
-  database: "burgers_db"
-});*/
-
 // Heroku deployment with JawsDB add on
 var connection;
 if (process.env.JAWSDB_URL) {
   connection = mysql.createConnection(process.env.JAWSDB_URL);
 } else {
-  connection = mysqle.createConnection({
+  connection = mysql.createConnection({
     host: "localhost",
     port: 3306,
     user: "root",
