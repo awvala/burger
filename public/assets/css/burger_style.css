@@ -29,6 +29,7 @@ body{
     background-color: black;
     opacity: .8;
     color: white;
+    padding: 5px;
 }
 
 .jumbotron {

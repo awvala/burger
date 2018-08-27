@@ -48,6 +48,7 @@ connection.connect(function (err) {
 
 // Start our server so that it can begin listening to client requests.
 app.listen(PORT, function () {
+  console.log(process.env.NODE_ENV);
   // Log (server-side) when our server has started
   console.log("Server listening on: http://localhost:" + PORT);
 });
